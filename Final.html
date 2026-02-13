@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Navjot ❤️ My Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+font-family:'Georgia';
+background:linear-gradient(to right,#ff758c,#ff7eb3);
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+.container{
+padding-top:80px;
+position:relative;
+z-index:2;
+}
+
+h1{
+font-size:45px;
+}
+
+button{
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:20px;
+transition:0.3s;
+}
+
+#yes{
+background:white;
+color:#ff4e50;
+}
+
+#no{
+background:#ff4e50;
+color:white;
+position:relative;
+}
+
+#message{
+display:none;
+margin-top:40px;
+font-size:20px;
+width:80%;
+margin:auto;
+animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* Floating Roses */
+.rose{
+position:fixed;
+bottom:-50px;
+font-size:25px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0); opacity:1;}
+100%{transform:translateY(-100vh); opacity:0;}
+}
+
+/* Slideshow */
+.slideshow{
+width:250px;
+height:250px;
+margin:20px auto;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgmusic" autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+<h1>Navjot ❤️</h1>
+<h2>Will You Be My Valentine?</h2>
+
+<div class="slideshow">
+<img id="slide" src="https://images.unsplash.com/photo-1516589091380-5d8e87df6995">
+</div>
+
+<button id="yes" onclick="showLove()">YES 💖</button>
+<button id="no" onmouseover="moveNo()">NO 😜</button>
+
+<div id="message">
+<h2>You Said YES 😍</h2>
+<p>
+Navjot, you are the most beautiful chapter of my life.
+Your love makes my world brighter,
+your presence makes everything peaceful.
+I promise to protect your smile,
+to stand beside you in every storm,
+and to love you more with each passing day.
+You are my forever Valentine ❤️
+</p>
+</div>
+
+</div>
+
+<script>
+
+/* Moving NO button */
+function moveNo(){
+let btn = document.getElementById("no");
+btn.style.position="absolute";
+btn.style.top=Math.random()*500+"px";
+btn.style.left=Math.random()*500+"px";
+}
+
+/* YES button action */
+function showLove(){
+document.getElementById("message").style.display="block";
+launchFireworks();
+}
+
+/* Fireworks */
+function launchFireworks(){
+for(let i=0;i<30;i++){
+let spark=document.createElement("div");
+spark.innerHTML="✨";
+spark.style.position="fixed";
+spark.style.left=Math.random()*100+"vw";
+spark.style.top=Math.random()*100+"vh";
+spark.style.fontSize="25px";
+spark.style.animation="fadeOut 2s linear forwards";
+document.body.appendChild(spark);
+
+setTimeout(()=>{spark.remove();},2000);
+}
+}
+
+/* Floating Roses */
+setInterval(()=>{
+let rose=document.createElement("div");
+rose.classList.add("rose");
+rose.innerHTML="🌹";
+rose.style.left=Math.random()*100+"vw";
+document.body.appendChild(rose);
+setTimeout(()=>{rose.remove();},10000);
+},800);
+
+/* Slideshow */
+let images=[
+"https://images.unsplash.com/photo-1516589091380-5d8e87df6995",
+"https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+];
+
+let index=0;
+setInterval(()=>{
+index=(index+1)%images.length;
+document.getElementById("slide").src=images[index];
+},3000);
+
+</script>
+
+</body>
+</html>
